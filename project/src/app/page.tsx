@@ -1,4 +1,5 @@
 import { ProductType } from "@/types/productType"
+import { Product } from './components/product'
 
 async function getProducts() {
   const response = await fetch('https://fakestoreapi.com/products')
@@ -14,11 +15,9 @@ export default async function Home() {
   return (
     <section className='max-w-7xl mx-auto pt-8 px-8 xl:px-0'>
       <article className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 xl:gap-6">
-        {products.map((product: ProductType) => {
-          <aside key={product.id}>
-            {product.title}
-          </aside>
-        })}
+        {products.map((product: ProductType) => (
+          <Product key={product.id} product={product} />
+        ))}
       </article>
     </section>
   )
