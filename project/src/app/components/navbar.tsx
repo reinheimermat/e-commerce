@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useCardStore } from "@/store";
 import { ShoppingCartIcon } from "lucide-react";
+import { Cart } from "./cart";
 
 export function Navbar() {
   /*   const useStore = useCardStore();*/
@@ -14,12 +15,7 @@ export function Navbar() {
         Next Store
       </Link>
       <section className="flex items-center gap-8">
-        <article className="flex items-center cursor-pointer relative">
-          <ShoppingCartIcon />
-          <span className="bg-teal-600 text-sm text-bold rounded-full h-5 w-5 flex items-center justify-center absolute left-4 bottom-3">
-            2
-          </span>
-        </article>
+        <Cart />
         <article>
           <SignedIn>
             <UserButton />
