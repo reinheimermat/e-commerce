@@ -1,20 +1,37 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
-import { ProductType } from './types/productType'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import { ProductType } from "./types/productType";
 
-type CardState = {
-    cart: ProductType[]
-    /* addToCart: (product: ProductType) => void
-    removeFromCart: (productId: string) => void */
-    isOpen: boolean
-    toggleCart: () => void
-}
+type CartState = {
+  cart: ProductType[];
+  addProduct: (product: ProductType) => void;
+  isOpen: boolean;
+  toggleCart: () => void;
+};
 
-export const useCardStore = create<CardState>()(
-    persist((set) => ({
-        cart: [],
-        isOpen: false,
-        addToCart: false,
-        toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
-    }), { name: 'cart-storage' })
-)
+export const useCartStore = create<CartState>()(
+  persist(
+    (set) => ({
+      cart: [],
+      addProduct: (item) =>
+        set((state) => {
+          const product = state.cart.find((p) => p.id === item.id);
+          if (product) {
+            const updatedCart = state.cart.map((p) => {
+              if (p.id === item.id) {
+                return { ...p, quantity: p.quantity ? p.quantity + 1 : 1 };
+              }
+              return p;
+            });
+            return { cart: updatedCart };
+          } else {
+            return { cart: [...state.cart, { ...item, quantity: 1 }] };
+          }
+        }),
+      isOpen: false,
+      addToCart: false,
+      toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
+    }),
+    { name: "cart-storage" }
+  )
+);

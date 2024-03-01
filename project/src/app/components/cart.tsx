@@ -1,9 +1,9 @@
 "use client";
-import { useCardStore } from "@/store";
+import { useCartStore } from "@/store";
 import { ShoppingCartIcon } from "lucide-react";
 
 export function Cart() {
-  const useStore = useCardStore();
+  const useStore = useCartStore();
   return (
     <>
       <article
