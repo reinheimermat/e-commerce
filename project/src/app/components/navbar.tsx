@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { useCardStore } from "@/store";
+import { useCartStore } from "@/store";
 import { ShoppingCartIcon } from "lucide-react";
 import { Cart } from "./cart";
 
