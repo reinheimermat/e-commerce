@@ -39,10 +39,18 @@ export function CartDrawer() {
               <p className="text-teal-600 text-sm font-bold">
                 {formatPrice(item.price)}
               </p>
-              <button onClick={() => useStore.addProduct(item)} className="py-1 px-2 border rounded-md mt-2 text-sm mr-1">
+              <button
+                onClick={() => useStore.addProduct(item)}
+                className="py-1 px-2 border rounded-md mt-2 text-sm mr-1"
+              >
                 Adicionar
               </button>
-              <button>Remover</button>
+              <button
+                onClick={() => useStore.removeProduct(item)}
+                className="py-1 px-2 border rounded-md mt-2 text-sm"
+              >
+                Remover
+              </button>
             </div>
           </aside>
         ))}
