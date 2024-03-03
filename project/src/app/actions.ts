@@ -4,7 +4,7 @@ import { ProductType } from "@/types/productType"
 import { stripe } from "@/lib/stripe"
 
 export async function fechProducts({ lastProductId }: { lastProductId?: string | undefined }) {
-    const params = lastProductId ? { starting_after: lastProductId, limit: 12 } : {};
+    const params = lastProductId ? { starting_after: lastProductId, limit: 12 } : { limit: 12 };
 
     const { data: products , has_more } = await stripe.products.list(params)
 
