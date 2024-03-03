@@ -3,8 +3,8 @@
 import { formatPrice } from "@/lib/utils";
 import { useCartStore } from "@/store";
 import Image from "next/image";
-import { CheckoutButton } from "./checkoutButton";
-import { Checkout } from "./checkout";
+import { CheckoutButton } from "./checkoutButton"
+import { Checkout } from "./checkout"
 
 export function CartDrawer() {
   const useStore = useCartStore();
